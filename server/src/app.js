@@ -11,8 +11,7 @@ import bcrypt from 'bcrypt';
 
 
 const app = express();
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+
 
 app.use(mongoSanitize());
 
