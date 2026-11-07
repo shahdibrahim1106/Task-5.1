@@ -1,4 +1,7 @@
 import { Instructor } from '../models/Instructor.js';
+import Joi from 'joi';
+import bcrypt from 'bcryptjs';
+
 
 // =============================================================================
 //  INSTRUCTOR PORTAL CONTROLLER  —  ⚠️ INTENTIONALLY VULNERABLE (security lab)
