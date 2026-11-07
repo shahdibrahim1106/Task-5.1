@@ -18,7 +18,7 @@ import bcrypt from 'bcryptjs';
 // =============================================================================
 const PUBLIC_FIELDS = 'name department role';
  const loginSchema = Joi.object({
-      username: Joi.string().trim.min(1).max(100).required(),
+      username: Joi.string().trim().min(1).max(100).required(),
       password: Joi.string().min(1).max(100).required()
     });
 const searchSchema = Joi.object({
