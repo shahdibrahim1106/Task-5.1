@@ -13,7 +13,9 @@ import { Instructor } from '../models/Instructor.js';
 //
 // This is the bug students must find and fix. Do not "clean this up".
 // =============================================================================
-
+function publicInstructor(u) {
+  return { id: u._id.toString(), name: u.name, email: u.email, createdAt: u.createdAt };
+}
 function publicProfile(doc) {
   // A successful login is a "trophy": we deliberately return the sensitive
   // fields so a bypass clearly reveals what it compromised.
@@ -82,7 +84,7 @@ export async function searchInstructors(req, res, next) {
     //   ?$where=this.password.length>10 -> server-side JavaScript execution
     const filter = req.query;
     const instructors = await Instructor.find(filter).lean();
-    res.json({ count: instructors.length, instructors });
+    res.json({ count: instructors.length, instructors: publicInstructor(instructors) });
   } catch (err) {
     next(err);
   }
