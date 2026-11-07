@@ -6,10 +6,14 @@ import reviewRoutes from './routes/reviews.js';
 import userRoutes from './routes/users.js';
 import instructorRoutes from './routes/instructors.js';
 import mongoSanitize from'express-mongo-sanitize';
+import bcrypt from 'bcrypt';
 
 
 
 const app = express();
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 app.use(mongoSanitize());
 
 app.use(morgan('dev'));

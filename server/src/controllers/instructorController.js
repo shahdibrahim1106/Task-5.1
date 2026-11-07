@@ -45,12 +45,14 @@ export async function loginInstructor(req, res, next) {
     // filter that matches any account (authentication bypass). With
     // {"password":{"$regex":"^S"}} the success/failure response becomes an
     // oracle for extracting the stored password one character at a time.
+
     const instructor = await Instructor.findOne({ username, password });
+    bcrypt.hash(password, 10);
 
     if (!instructor) {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    return res.json({ instructor: publicProfile(instructor) });
+    return res.json({ instructor: publicInstructor(instructors) });
   } catch (err) {
     next(err);
   }
