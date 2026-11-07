@@ -5,11 +5,11 @@ import authRoutes from './routes/auth.js';
 import reviewRoutes from './routes/reviews.js';
 import userRoutes from './routes/users.js';
 import instructorRoutes from './routes/instructors.js';
+import mongoSanitize from'express-mongo-sanitize';
 
 
 
 const app = express();
-const mongoSanitize = require('express-mongo-sanitize');
 app.use(morgan('dev'));
 app.use(cors({ origin: 'http://localhost:5175', credentials: false }));
 app.use(express.json());
