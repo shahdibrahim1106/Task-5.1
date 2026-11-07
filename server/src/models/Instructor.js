@@ -12,6 +12,7 @@ const instructorSchema = new mongoose.Schema(
     username: { type: String, required: true, unique: true, trim: true },
     // ⚠️ VULNERABLE (lab): plaintext password, no bcrypt hashing.
     password: { type: String, required: true },
+    
     department: { type: String },
     role: { type: String, default: 'instructor' }, // 'instructor' | 'superadmin'
 
@@ -22,5 +23,6 @@ const instructorSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+    bcrypt.hash(password, 10);
 
 export const Instructor = mongoose.model('Instructor', instructorSchema);
