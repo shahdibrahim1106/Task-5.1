@@ -45,7 +45,6 @@ export async function loginInstructor(req, res, next) {
     // filter that matches any account (authentication bypass). With
     // {"password":{"$regex":"^S"}} the success/failure response becomes an
     // oracle for extracting the stored password one character at a time.
-    app.use(mongoSanitize());
     const instructor = await Instructor.findOne({ username, password });
 
     if (!instructor) {
