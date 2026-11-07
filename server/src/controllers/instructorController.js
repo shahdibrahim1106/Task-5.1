@@ -17,6 +17,9 @@ const PUBLIC_FIELDS = 'name department role';
 function publicInstructor(u) {
   return { id: u._id.toString(), name: u.name, email: u.email, createdAt: u.createdAt };
 }
+function escapeRegex(text) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 function publicProfile(doc) {
   // A successful login is a "trophy": we deliberately return the sensitive
   // fields so a bypass clearly reveals what it compromised.
